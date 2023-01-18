@@ -1,0 +1,59 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  background-image: url(https://img.freepik.com/fotos-gratis/quadro-negro-inscrito-com-formulas-e-calculos-cientificos_1150-19413.jpg?w=1380&t=st=1673983172~exp=1673983772~hmac=95989efc4096c417a6f78116ebe9a873b1a0fd4bc933c802bfe7a5c9c8ed11f8);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+header {
+  background-color: #282c34;
+  width: 50rem;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 10px 10px 10px;
+  margin-bottom: 25px;
+  border: saddlebrown groove 0.5rem;
+}
+header h1 {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 3rem;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
