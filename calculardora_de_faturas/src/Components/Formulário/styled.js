@@ -21,13 +21,14 @@ export const FormStyled = styled.form`
         align-items: flex-start;
         justify-content: center;
         gap: 0.2rem;
+        height: 5rem;
         }
     input{
         height: 1.2rem;
         margin: 0px;
     }
         input::placeholder { 
-            color: red;
+            color: grey;
             opacity: 50%;
             font-size: smaller;
             }
