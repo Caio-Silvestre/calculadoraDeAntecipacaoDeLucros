@@ -7,7 +7,7 @@ export const formSchema = yup.object().shape({
       .number()
       .typeError("Insira um número válido")
       .required("Valor é Obrigatório")
-      .min(1, "Insira o valor da venda"),
+      .min(1000, "valor mínimo aceito R$1000"),
       parcelas: yup
       .number()
       .typeError("Insira um número válido")

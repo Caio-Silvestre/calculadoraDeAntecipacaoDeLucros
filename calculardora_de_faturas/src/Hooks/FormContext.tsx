@@ -3,12 +3,17 @@ import { toast } from "react-toastify";
 import { IFormRegister } from "../Components/Formulário";
 import { api } from "../service/api";
 
+
 interface IFormProviderProps {
     children : ReactNode
 }
 interface IFormContext {
-    calculatePayments(data: IFormRegister):void
+    calculatePayments(data: IFormRegister): Promise<void>
     valuesApi: object
+    valorTomorrow: string
+    valor15Dias: string
+    valor30Dias: string
+    valor90Dias: string
 }
 
 const FormContext = createContext<IFormContext>({} as IFormContext);
@@ -16,12 +21,13 @@ const FormContext = createContext<IFormContext>({} as IFormContext);
 
 export const FormProvider = ({children}: IFormProviderProps) => {
     const [valuesApi, setValuesApi] = useState([]);
-    // const [valorTomorrow, setValorTomorrow] = useState({});
-    // const [valor15Dias, setValor15Dias] = useState(0);
-    // const [valor30Dias, setValor30Dias] = useState(0);
-    // const [valor90Dias, setValor90Dias] = useState(0);
-
-    const calculatePayments = (data: IFormRegister):void => {
+    const [valorTomorrow, setValorTomorrow] = useState("");
+    const [valor15Dias, setValor15Dias] = useState("");
+    const [valor30Dias, setValor30Dias] = useState("");
+    const [valor90Dias, setValor90Dias] = useState("");
+    
+    
+    async function calculatePayments(data: IFormRegister){
         
         const valueValorVenda = (data.valorVenda);
         const valueParcelas = (data.parcelas);
@@ -31,23 +37,31 @@ export const FormProvider = ({children}: IFormProviderProps) => {
 	        installments: valueParcelas,
 	        mdr: valueMdr
         }
-      
-        api
+        
+        await api
         .post("",handleData)
         .then((response) =>{ 
             setValuesApi(response.data);
+            // setValorTomorrow(Object.values(valuesApi)[0]);
+            // setValor15Dias(Object.values(valuesApi)[1]);
+            // setValor30Dias(Object.values(valuesApi)[2]);
+            // setValor90Dias(Object.values(valuesApi)[3]);
             toast.success("Resultados disponíveis");
         })
         .catch((error) => {
             console.log(error)
             toast.error(`Algo deu errado, tente novamente` );
         })
-        return console.log(valuesApi)
-    }
+        return console.log(valorTomorrow, valor15Dias, valor30Dias, valor90Dias);
+            }
     return (
         <FormContext.Provider value={{
             calculatePayments,
-            valuesApi
+            valuesApi,
+            valorTomorrow,
+            valor15Dias,
+            valor30Dias,
+            valor90Dias,
         }}>
 
             {children}
